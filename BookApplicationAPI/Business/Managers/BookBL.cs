@@ -19,24 +19,26 @@ namespace BookApplicationAPI.Business.Managers
         }
         public List<Book> GetBooks()
         {
-            return this.bookDA.GetBooks();
+            return this.bookDA.GetAll<Book>().ToList();
         }
         public Book GetBookByID(int id)
         {
-            throw new NotImplementedException();
+            return this.bookDA.GetById<Book>(id);
         }
         public void InsertBook(Book book)
         {
-            throw new NotImplementedException();
+            this.bookDA.Insert<Book>(book);
         }
 
         public void UpdateBook(Book book, int id)
         {
-            throw new NotImplementedException();
+            book.ID = id;
+            this.bookDA.Update<Book>(book);
         }
         public void DeleteBook(int id)
         {
-            throw new NotImplementedException();
+            var book = this.bookDA.GetById<Book>(id);
+            this.bookDA.Delete<Book>(book);
         }
     }
 }

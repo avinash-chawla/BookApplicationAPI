@@ -45,6 +45,9 @@ namespace BookApplicationAPI.Repositories.Managers
             {
                 throw new ArgumentNullException("entity");
             }
+            //_context.Attach(entity);
+            //_context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.Update(entity);
             _context.SaveChanges();
         }
         public void Delete<T>(T entity) where T : class
